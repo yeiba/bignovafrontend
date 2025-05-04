@@ -10,8 +10,8 @@ export const authOptions: NextAuthOptions = {
       clientSecret: config.GOOGLE_CLIENT_SECRET as string,
     }),
     GitHubProvider({
-      clientId: config.GITHUB_CLIENT_ID as string, // Replace with your GitHub Client ID
-      clientSecret: config.GITHUB_CLIENT_SECRET as string, // Replace with your GitHub Client Secret
+      clientId: config.GITHUB_CLIENT_ID, // Replace with your GitHub Client ID
+      clientSecret: config.GITHUB_CLIENT_SECRET, // Replace with your GitHub Client Secret
     }),
   ],
 };
