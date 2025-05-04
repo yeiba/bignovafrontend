@@ -1,0 +1,320 @@
+import {
+  User,
+  Role,
+  Category,
+  Restaurant,
+  Menu,
+  Dish,
+  Image,
+} from "@/types/models";
+
+// Mock Images
+export const mockImages: Image[] = [
+  {
+    id: "1",
+    url: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1",
+    altText: "Food Image 1",
+  },
+  {
+    id: "2",
+    url: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c",
+    altText: "Food Image 2",
+  },
+  {
+    id: "3",
+    url: "https://images.unsplash.com/photo-1504674900247-0877df9cc836",
+    altText: "Food Image 3",
+  },
+  {
+    id: "4",
+    url: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd",
+    altText: "Food Image 4",
+  },
+  {
+    id: "5",
+    url: "https://images.unsplash.com/photo-1545247181-516773cae754",
+    altText: "Restaurant Image 1",
+  },
+  {
+    id: "6",
+    url: "https://images.unsplash.com/photo-1537047902294-62a40c20a6ae",
+    altText: "Restaurant Image 2",
+  },
+  {
+    id: "7",
+    url: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0",
+    altText: "Restaurant Image 3",
+  },
+  {
+    id: "8",
+    url: "https://images.unsplash.com/photo-1424847651672-bf20a4b0982b",
+    altText: "Restaurant Image 4",
+  },
+  {
+    id: "9",
+    url: "https://images.unsplash.com/photo-1484723091739-30a097e8f929",
+    altText: "Dish Image 1",
+  },
+  {
+    id: "10",
+    url: "https://images.unsplash.com/photo-1547592180-85f173990554",
+    altText: "Category Image 1",
+  },
+  {
+    id: "11",
+    url: "https://images.unsplash.com/photo-1533777857889-4be7c70b33f7",
+    altText: "Category Image 2",
+  },
+  {
+    id: "12",
+    url: "https://images.unsplash.com/photo-1528735602780-2552fd46c7af",
+    altText: "admin Avatar 1",
+  },
+  {
+    id: "13",
+    url: "https://images.unsplash.com/photo-1528735602780-2552fd46c7af",
+    altText: "chef Avatar 1",
+  },
+  {
+    id: "14",
+    url: "https://images.unsplash.com/photo-1528735602780-2552fd46c7af",
+    altText: "User Avatar 1",
+  },
+];
+
+// Mock Users
+export const mockUsers: User[] = [
+  {
+    id: "1",
+    name: "John Smith",
+    email: "john@example.com",
+    role: Role.ADMIN,
+    createdAt: new Date("2023-01-15"),
+    updatedAt: new Date("2023-01-15"),
+    avatar: mockImages[11],
+  },
+  {
+    id: "2",
+    name: "Jane Doe",
+    email: "jane@example.com",
+    role: Role.USER,
+    createdAt: new Date("2023-02-10"),
+    updatedAt: new Date("2023-02-10"),
+    avatar: mockImages[12],
+  },
+  {
+    id: "3",
+    name: "Chef Gordon",
+    email: "gordon@example.com",
+    role: Role.CHEF,
+    createdAt: new Date("2023-03-05"),
+    updatedAt: new Date("2023-03-05"),
+    avatar: mockImages[13],
+  },
+];
+
+// Mock Categories
+export const mockCategories: Category[] = [
+  {
+    id: "1",
+    name: "Italian",
+    description: "Italian cuisine with pasta, pizza and more",
+    userId: "1",
+    createdAt: new Date("2023-01-20"),
+    updatedAt: new Date("2023-01-20"),
+    image: mockImages[10],
+  },
+  {
+    id: "2",
+    name: "Japanese",
+    description: "Sushi, ramen, and other Japanese delicacies",
+    userId: "1",
+    createdAt: new Date("2023-01-21"),
+    updatedAt: new Date("2023-01-21"),
+    image: mockImages[11],
+  },
+  {
+    id: "3",
+    name: "Mexican",
+    description: "Tacos, burritos, and authentic Mexican cuisine",
+    userId: "1",
+    createdAt: new Date("2023-01-22"),
+    updatedAt: new Date("2023-01-22"),
+    image: mockImages[10],
+  },
+  {
+    id: "4",
+    name: "Indian",
+    description: "Flavorful curries and Indian specialties",
+    userId: "1",
+    createdAt: new Date("2023-01-23"),
+    updatedAt: new Date("2023-01-23"),
+    image: mockImages[11],
+  },
+];
+
+// Mock Restaurants
+export const mockRestaurants: Restaurant[] = [
+  {
+    id: "1",
+    name: "Pasta Paradise",
+    address: "123 Main St, New York",
+    ownerId: "1",
+    categoryId: "1",
+    createdAt: new Date("2023-02-01"),
+    updatedAt: new Date("2023-02-01"),
+    banner: mockImages[5],
+    category: mockCategories[0],
+  },
+  {
+    id: "2",
+    name: "Sushi Supreme",
+    address: "456 Oak Ave, Los Angeles",
+    ownerId: "1",
+    categoryId: "2",
+    createdAt: new Date("2023-02-02"),
+    updatedAt: new Date("2023-02-02"),
+    banner: mockImages[6],
+    category: mockCategories[1],
+  },
+  {
+    id: "3",
+    name: "Taco Town",
+    address: "789 Pine Blvd, Miami",
+    ownerId: "2",
+    categoryId: "3",
+    createdAt: new Date("2023-02-03"),
+    updatedAt: new Date("2023-02-03"),
+    banner: mockImages[7],
+    category: mockCategories[2],
+  },
+  {
+    id: "4",
+    name: "Curry Corner",
+    address: "101 Elm St, Chicago",
+    ownerId: "2",
+    categoryId: "4",
+    createdAt: new Date("2023-02-04"),
+    updatedAt: new Date("2023-02-04"),
+    banner: mockImages[8],
+    category: mockCategories[3],
+  },
+];
+
+// Mock Menus
+export const mockMenus: Menu[] = [
+  {
+    id: "1",
+    name: "Lunch Menu",
+    restaurantId: "1",
+    createdAt: new Date("2023-02-15"),
+    updatedAt: new Date("2023-02-15"),
+    restaurant: mockRestaurants[0],
+  },
+  {
+    id: "2",
+    name: "Dinner Menu",
+    restaurantId: "1",
+    createdAt: new Date("2023-02-15"),
+    updatedAt: new Date("2023-02-15"),
+    restaurant: mockRestaurants[0],
+  },
+  {
+    id: "3",
+    name: "Special Menu",
+    restaurantId: "2",
+    createdAt: new Date("2023-02-16"),
+    updatedAt: new Date("2023-02-16"),
+    restaurant: mockRestaurants[1],
+  },
+  {
+    id: "4",
+    name: "Lunch Specials",
+    restaurantId: "3",
+    createdAt: new Date("2023-02-17"),
+    updatedAt: new Date("2023-02-17"),
+    restaurant: mockRestaurants[2],
+  },
+];
+
+// Mock Dishes
+export const mockDishes: Dish[] = [
+  {
+    id: "1",
+    name: "Spaghetti Carbonara",
+    description:
+      "Classic Italian pasta with eggs, cheese, pancetta, and black pepper",
+    price: 14.99,
+    images: [mockImages[0], mockImages[1]],
+    menuId: "1",
+    categoryId: "1",
+    createdAt: new Date("2023-03-01"),
+    updatedAt: new Date("2023-03-01"),
+    category: mockCategories[0],
+    menu: mockMenus[0],
+  },
+  {
+    id: "2",
+    name: "Margherita Pizza",
+    description: "Traditional pizza with tomato sauce, mozzarella, and basil",
+    price: 12.99,
+    images: [mockImages[2]],
+    menuId: "1",
+    categoryId: "1",
+    createdAt: new Date("2023-03-01"),
+    updatedAt: new Date("2023-03-01"),
+    category: mockCategories[0],
+    menu: mockMenus[0],
+  },
+  {
+    id: "3",
+    name: "California Roll",
+    description: "Sushi roll with crab, avocado, and cucumber",
+    price: 8.99,
+    images: [mockImages[3]],
+    menuId: "3",
+    categoryId: "2",
+    createdAt: new Date("2023-03-02"),
+    updatedAt: new Date("2023-03-02"),
+    category: mockCategories[1],
+    menu: mockMenus[2],
+  },
+  {
+    id: "4",
+    name: "Beef Tacos",
+    description:
+      "Three soft tacos with seasoned beef, lettuce, cheese, and salsa",
+    price: 9.99,
+    images: [mockImages[4]],
+    menuId: "4",
+    categoryId: "3",
+    createdAt: new Date("2023-03-03"),
+    updatedAt: new Date("2023-03-03"),
+    category: mockCategories[2],
+    menu: mockMenus[3],
+  },
+  {
+    id: "5",
+    name: "Chicken Tikka Masala",
+    description: "Tender chicken in a rich, spiced tomato cream sauce",
+    price: 15.99,
+    images: [mockImages[1]],
+    categoryId: "4",
+    createdAt: new Date("2023-03-04"),
+    updatedAt: new Date("2023-03-04"),
+    category: mockCategories[3],
+  },
+  {
+    id: "6",
+    name: "Fettuccine Alfredo",
+    description: "Pasta in a creamy Parmesan cheese sauce",
+    price: 13.99,
+    images: [mockImages[0]],
+    menuId: "2",
+    categoryId: "1",
+    createdAt: new Date("2023-03-05"),
+    updatedAt: new Date("2023-03-05"),
+    category: mockCategories[0],
+    menu: mockMenus[1],
+  },
+];
