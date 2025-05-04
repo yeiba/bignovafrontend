@@ -16,14 +16,11 @@ type RefreshResponse = {
 // create a new mutex
 const baseQuery = fetchBaseQuery({
   baseUrl: "https://bignovabackend.onrender.com/api/v1",
-  prepareHeaders: (headers) => {
-    headers.set("x-api-key", config.NEXT_PUBLIC_API_KEY);
-    return headers;
-  },
   credentials: "include",
   mode: "cors",
   headers: {
     "Content-Type": "application/json",
+    "x-api-key": config.NEXT_PUBLIC_API_KEY,
   },
 });
 
