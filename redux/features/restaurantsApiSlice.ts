@@ -3,10 +3,10 @@ import { apiSlice } from "../services/apiSlice";
 export const restaurentsApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     getRestaurants: builder.query({
-      query: () => "/restaurants",
+      query: () => "restaurants",
     }),
     getRestaurantById: builder.query({
-      query: (data) => `/restaurants/restaurantId/${data}`,
+      query: (data) => `restaurants/restaurantId/${data}`,
     }),
   }),
   overrideExisting: true,
