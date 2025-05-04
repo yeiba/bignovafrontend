@@ -2,50 +2,21 @@ import { apiSlice } from "../services/apiSlice";
 
 export const menusApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    getAllUsers: builder.query({
-      query: () => "/get-users",
+    getMenus: builder.query({
+      query: () => "/menus",
     }),
-    getUserById: builder.query({
-      query: (data) => `/get-user-by-id?id=${data}`,
+    getMenuById: builder.query({
+      query: (data) => `/menus/menuId/${data}`,
     }),
-    getUserProfile: builder.query({
-      query: () => "/user-profile",
-    }),
-    oauthRegister: builder.mutation({
-      query: (data) => ({
-        url: "/oauth-subscribe",
-        method: "POST",
-        body: data,
-      }),
-    }),
-    oauthLogin: builder.mutation({
-      query: (data) => ({
-        url: "/oauth-participate",
-        method: "POST",
-        body: data,
-      }),
-    }),
-    login: builder.mutation({
-      query: (data) => ({
-        url: "/login-dashboard",
-        method: "POST",
-        body: data,
-      }),
-    }),
-    logout: builder.mutation({
-      query: () => ({
-        url: "/logout",
-        method: "POST",
-      }),
+    getMenusByRestaurantId: builder.query({
+      query: (data) => `/menus/restaurantId/${data}`,
     }),
   }),
   overrideExisting: true,
 });
 
 export const {
-  useLoginMutation,
-  useLogoutMutation,
-  useGetAllUsersQuery,
-  useGetUserByIdQuery,
-  useGetUserProfileQuery,
+  useGetMenuByIdQuery,
+  useGetMenusQuery,
+  useGetMenusByRestaurantIdQuery,
 } = menusApiSlice;

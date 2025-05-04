@@ -6,14 +6,17 @@ import DetailHeader from "@/app/components/DetailHeader";
 import Card from "@/app/components/Card";
 import { mockRestaurants, mockMenus, mockDishes } from "@/data/mockData";
 import { useParams } from "next/navigation";
+import { useGetRestaurantByIdQuery } from "@/redux/features/restaurantsApiSlice";
+import { useGetMenusByRestaurantIdQuery } from "@/redux/features/menusApiSlice";
 
 const RestaurantDetail: React.FC = () => {
   const { restaurantId } = useParams<{ restaurantId: string }>();
-  const restaurant = mockRestaurants.find((r) => r.id === restaurantId);
-  const restaurantMenus = mockMenus.filter(
-    (m) => m.restaurantId === restaurantId
-  );
 
+  const { data: restaurant } = useGetRestaurantByIdQuery(restaurantId);
+  const { data: restaurantMenus } =
+    useGetMenusByRestaurantIdQuery(restaurantId);
+
+  console.log(restaurant?.data);
   if (!restaurant) {
     return (
       <Layout>
@@ -29,11 +32,11 @@ const RestaurantDetail: React.FC = () => {
   return (
     <Layout>
       <DetailHeader
-        title={restaurant.name}
-        subtitle={`${restaurant.category?.name || "Restaurant"} • ${
+        title={restaurant?.data.name}
+        subtitle={`${restaurant?.data.category?.name || "Restaurant"} • ${
           restaurant.address
         }`}
-        imageUrl={restaurant.banner?.url}
+        imageUrl={restaurant?.data.banner?.imageUrl}
         backLink="/restaurants"
         backText="Back to Restaurants"
       />
@@ -41,21 +44,21 @@ const RestaurantDetail: React.FC = () => {
       <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
         <div className="mb-12">
           <h2 className="text-2xl font-bold text-gray-900 mb-6">
-            About {restaurant.name}
+            About {restaurant?.data.name}
           </h2>
           <p className="text-gray-600">
-            {restaurant.name} is a wonderful{" "}
-            {restaurant.category?.name || "restaurant"} located at{" "}
-            {restaurant.address}. Come and enjoy our delicious food in a warm
-            and welcoming atmosphere.
+            {restaurant?.data.name} is a wonderful{" "}
+            {restaurant?.data.category?.name || "restaurant"} located at{" "}
+            {restaurant?.data.address}. Come and enjoy our delicious food in a
+            warm and welcoming atmosphere.
           </p>
         </div>
 
         <div className="mb-12">
           <h2 className="text-2xl font-bold text-gray-900 mb-6">Menus</h2>
-          {restaurantMenus.length > 0 ? (
+          {restaurantMenus?.data.length > 0 ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {restaurantMenus.map((menu) => (
+              {restaurantMenus?.data.map((menu: any) => (
                 <Card
                   key={menu.id}
                   title={menu.name}
@@ -70,7 +73,7 @@ const RestaurantDetail: React.FC = () => {
             </p>
           )}
         </div>
-
+        {/* 
         <div>
           <h2 className="text-2xl font-bold text-gray-900 mb-6">
             Featured Dishes
@@ -93,7 +96,7 @@ const RestaurantDetail: React.FC = () => {
                 />
               ))}
           </div>
-        </div>
+        </div> */}
       </div>
     </Layout>
   );
