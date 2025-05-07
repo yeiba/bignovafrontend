@@ -20,7 +20,7 @@ export const store = () => {
       [apiSlice.reducerPath]: apiSlice.reducer,
       auth: authSlice,
     },
-    // preloadedState,
+    preloadedState,
     devTools: process.env.NODE_ENV !== "production",
     // Redux DevTools show in development mode and not show in production
     middleware: (getDefaultMiddleware) =>

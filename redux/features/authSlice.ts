@@ -4,15 +4,15 @@ import { loadState } from "../utils/statePersistence";
 
 interface AuthState {
   isAuthenticated: boolean;
-  role: "admin" | "user" | "staff" | "blogger" | null;
+  role: "admin" | "user" | null;
 }
 // Use `loadState` to get the initial state
 const preloadedState = loadState();
 
 // Extract the user state or fall back to defaults
 const initialState: AuthState = {
-  isAuthenticated: preloadedState?.user?.isAuthenticated || false,
-  role: preloadedState?.user?.role || null,
+  isAuthenticated: preloadedState?.auth?.isAuthenticated || false,
+  role: preloadedState?.auth?.role || null,
 };
 const authSlice = createSlice({
   name: "auth",

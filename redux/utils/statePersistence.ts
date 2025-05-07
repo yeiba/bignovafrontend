@@ -17,8 +17,7 @@ export const loadState = () => {
   const fullState = safeJSONParse(storedState);
 
   return {
-    article: fullState?.article || {},
-    user: fullState?.user || {},
+    auth: fullState?.user || {},
   };
 };
 
@@ -28,8 +27,7 @@ export const saveState = (state: any) => {
 
   try {
     const stateToSave = {
-      user: state.user,
-      article: state.article,
+      auth: state.user,
     };
 
     const serializedState = JSON.stringify(stateToSave);
